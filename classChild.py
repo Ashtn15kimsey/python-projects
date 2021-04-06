@@ -3,7 +3,7 @@ class user:
     password = '1234abcd'
     acount_number= 0
 
-class GPA(users):
+ class GPA(user):
     student_gpa = 4.0
     student_id = "id"
 
