@@ -9,15 +9,15 @@ with conn:
     cur = conn.cursor()
     cur.execute("CREATE TABLE IF NOT EXIST tbl_files( \
        ID INTEGER PRIMARY KEY AUTOINCREMENT, \
-       TEXT_filename\
+       file_name TEXT\
        )")
-      conn.commit()
-    conn.close()
+    conn.commit()
+conn.close()
     
 
 
-    conn = sqlite3.connect('test8.db')
-    with conn:
+conn = sqlite3.connect('test8.db')
+with conn:
         cur.execute
         for x in filelist:
             if x.endswith('.txt'):
@@ -25,8 +25,8 @@ with conn:
                 print(x)
 
 
-
-            conn.commit()
-         conn.close()
+    conn.commit()
+conn.close()
+   
 
             
