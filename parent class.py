@@ -2,8 +2,8 @@
 class Organism:
     name = "unknown"
     species = "unknown"
-    legs = NONE
-    arms = NONE
+    legs = 0
+    arms = 0
     dna = "sequence A"
     orgin = "uknown"
     carbon_based = True
@@ -13,7 +13,7 @@ class Organism:
         return msg
 
 #child class instance
-class Human(organisim):
+class Human(Organism):
     name = "mac"
     species = "homosapien"
     legs = 2
@@ -25,7 +25,7 @@ class Human(organisim):
         return msg
 
 ## another class instanc
-class Dog(organisim):
+class Dog(Organism):
      name = "spots"
      species = "canine"
      legs = 4
@@ -37,7 +37,7 @@ class Dog(organisim):
          msg = "\nEmits a loud, menacing growl and bites down ferociously on itst target!"
          return msg
 #another child class instances
-class Bacterium(organisim):
+class Bacterium(Organism):
     name = "X"
     species = "Bacteria"
     legs = 0
@@ -56,16 +56,16 @@ class Bacterium(organisim):
     
     if __name__ == " __main__":
         human = Human()
-            print(human.information())
-            print(human.ingenuity())
+        print(human.information())
+        print(human.ingenuity())
 
-            dog = Dog()
-            print(dog.information())
-            print(dog.bite())
+        dog = Dog()
+        print(dog.information())
+        print(dog.Bite())
 
-            bacteria = bacterium()
-            print(bacteria.information())
-            print(bacteria.replication())
+        bacteria = Bacterium()
+        print(bacteria.information())
+        print(bacteria.replication())
             
                 
     
