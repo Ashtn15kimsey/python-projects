@@ -7,7 +7,7 @@ conn = sqlite3.connect('test8.db')
 
 with conn:
     cur = conn.cursor()
-    cur.execute("CREATE TABLE IF NOT EXIST tbl_files( \
+    cur.execute("CREATE TABLE IF NOT EXISTS tbl_files( \
        ID INTEGER PRIMARY KEY AUTOINCREMENT, \
        file_name TEXT\
        )")
@@ -25,8 +25,8 @@ with conn:
                 print(x)
 
 
-    conn.commit()
-conn.close()
+                conn.commit()
+            conn.close()
    
 
             
