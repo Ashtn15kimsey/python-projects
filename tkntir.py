@@ -12,13 +12,13 @@ class ParentWindow(Frame):
         self.master.config(bg= '#000')
 
 
-        self.varfFname = StringVar()
-        self.varfLname = StringVar()
-        self.varfFname.set('Ash')
+        self.varffname = StringVar()
+        self.varflname = StringVar()
+        self.varFname.set('Ash')
         self.varfLname.set('kimsey')
 
-        print(self.varFname.get())
-        print(self.varLname.get())
+        print(self.varfname.get())
+        print(self.varlname.get())
         
             
         
