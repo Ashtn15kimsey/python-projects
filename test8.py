@@ -18,15 +18,15 @@ conn.close()
 
 conn = sqlite3.connect('test8.db')
 with conn:
-        cur.execute
-        for x in filelist:
-            if x.endswith('.txt'):
-                cur.execute("INSERT INTO tbl_files(file_name) VALUES()", (X))
-                print(x)
+     cur.execute
+     for x in filelist:
+         if x.endswith('.txt'):
+             cur.execute("INSERT INTO tbl_files(file_name) VALUES()", (X))
+             print(x)
 
 
-                conn.commit()
-            conn.close()
+     conn.commit()
+conn.close()
    
 
             
