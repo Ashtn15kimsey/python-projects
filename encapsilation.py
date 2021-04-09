@@ -1,7 +1,9 @@
+# Creating a protected class
 class Protected:
+
     def __init__(self):
         self.__privateVar = 12
-
+# calling contruction of protected class
     def getPrivate(self):
         print(self.__privateVar)
 
