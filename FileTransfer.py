@@ -1,5 +1,8 @@
 # Importing necessary packages
 import shutil
+import glob
+import os
+import datetime
 import tkinter as tk
 from tkinter import *
 from tkinter import messagebox, filedialog
@@ -86,7 +89,18 @@ def CopyFile():
  
     messagebox.showinfo("SUCCESSFULL")
      
-def MoveFile():
+def MoveFile(self):
+    # last modified date
+    full_path = os.path.join(sourceDir, file)
+    modifyDate = datetime.datetime.fromtimestamp(os.path.getmtime(full_path))
+    todaysDate = datetime.datetime.now()
+
+    #modified within 24 hours
+    modifyDateLimit = todaysDate - datetime.timedelta(days=1)
+    if modifyDateLimit <= modifyDate:
+        shutil.copy2(full_path, desDir)
+    messagebox.showinfo("succesfull")
+    
      
     # Retrieving the source file selected by the
     # user in the SourceBrowse() and storing it in a
