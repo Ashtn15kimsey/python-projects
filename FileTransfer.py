@@ -73,7 +73,7 @@ def CopyFile():
     # user in the SourceBrowse() and storing it in a
     # variable named files_list
     source_location = root.sourceText.get()
-    files_list = os.listdir(sourceLocation)
+    files_list = os.listdir(source_location)
     
  
     # Retrieving the destination location
@@ -92,17 +92,21 @@ def CopyFile():
     messagebox.showinfo("SUCCESSFULL")
      
 def MoveFile(self):
+    # source directory
+    sourceBrowse = browse.get()
+    
     # last modified date
     full_path = os.path.join(sourceBrowse, file)
-    modifyDate = datetime.datetime.fromtimestamp(os.path.getmtime(full_path))
+    modifyDate = datetime.datetime.fromtimestamp(os.path.getime(full_path))
     todaysDate = datetime.datetime.now()
+
 
     #modified within 24 hours
     for f in files_list:
-     modifyDateLimit = todaysDate - datetime.timedelta(days=1)
+        modifyDateLimit = todaysDate - datetime.timedelta(days=1)
     if modifyDateLimit <= modifyDate:
         shutil.copy2(full_path, desDir)
-    messagebox.showinfo("succesfull")
+    messagebox.showinfo("Successful")
     
      
     # Retrieving the source file selected by the
