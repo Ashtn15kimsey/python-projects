@@ -54,11 +54,11 @@ def SourceBrowse():
      
     #guide to find where users files are
     
-    root.files_list = list(filedialog.askopenfilenames(initialdir ="C:/Users/ash/Desktop"))
+    browse = filedialog.askdirectory(initialdir ="C:/Users/ash/Desktop")
      
     # Displaying the selected files in the root.sourceText
     # Entry using root.sourceText.insert()
-    root.sourceText.insert('1', root.files_list)
+    root.sourceText.insert(0, browse)
      
 def DestinationBrowse():
     # which files are to be copied using the
@@ -66,13 +66,15 @@ def DestinationBrowse():
     destinationdirectory = filedialog.askdirectory(initialdir ="C:/Users/ash/Desktop")
     # show the directory
     
-    root.destinationText.insert('1', destinationdirectory)
+    root.destinationText.insert('0', destinationdirectory)
      
 def CopyFile():
     # Retrieving the source file selected by the
     # user in the SourceBrowse() and storing it in a
     # variable named files_list
-    files_list = root.files_list
+    source_location = root.sourceText.get()
+    files_list = os.listdir(sourceLocation)
+    
  
     # Retrieving the destination location
    
@@ -91,12 +93,13 @@ def CopyFile():
      
 def MoveFile(self):
     # last modified date
-    full_path = os.path.join(sourceDir, file)
+    full_path = os.path.join(sourceBrowse, file)
     modifyDate = datetime.datetime.fromtimestamp(os.path.getmtime(full_path))
     todaysDate = datetime.datetime.now()
 
     #modified within 24 hours
-    modifyDateLimit = todaysDate - datetime.timedelta(days=1)
+    for f in files_list:
+     modifyDateLimit = todaysDate - datetime.timedelta(days=1)
     if modifyDateLimit <= modifyDate:
         shutil.copy2(full_path, desDir)
     messagebox.showinfo("succesfull")
