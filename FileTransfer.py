@@ -44,7 +44,7 @@ def CreateWidgets():
                         pady = 5, padx = 5)
      
     copyButton = Button(root, text ="move files",
-                        command = CopyFile, width = 15)
+                        command = MoveFile, width = 15)
     copyButton.grid(row = 3, column = 1,
                     pady = 5, padx = 5)
      
@@ -91,41 +91,39 @@ def CopyFile():
  
     messagebox.showinfo("SUCCESSFULL")
      
-def MoveFile(self):
+def MoveFile():
     # source directory
-    sourceBrowse = browse.get()
-    
+    browse = root.sourceText.get()
+    files_list = os.listdir(browse)
     # last modified date
-    full_path = os.path.join(sourceBrowse, file)
-    modifyDate = datetime.datetime.fromtimestamp(os.path.getime(full_path))
-    todaysDate = datetime.datetime.now()
 
 
     #modified within 24 hours
+    desDir = root.destinationText.get() 
     for f in files_list:
+        full_path = os.path.join(browse, f)
+        modifyDate = datetime.datetime.fromtimestamp(os.path.getmtime(full_path))
+        todaysDate = datetime.datetime.now()
         modifyDateLimit = todaysDate - datetime.timedelta(days=1)
-    if modifyDateLimit <= modifyDate:
-        shutil.copy2(full_path, desDir)
-    messagebox.showinfo("Successful")
+        if modifyDateLimit <= modifyDate:
+            shutil.copy2(full_path, desDir)
+            messagebox.showinfo("Successful")
     
      
     # Retrieving the source file selected by the
     # user in the SourceBrowse() and storing it in a
    
-    files_list = root.files_list
+    
  
     
     # storing in destination_location
-    destination_location = destinationLocation.get()
+   
  
     # Looping through the files present in the list
-    for f in files_list:
-         
+    
         # Moving the file to the destination using
         
-        shutil.move(f, destination_location)
- 
-    messagebox.showinfo("SUCCESSFULL")
+        
  
 # Creating object of tk class
 root = tk.Tk()
